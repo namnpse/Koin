@@ -11,6 +11,7 @@ import org.koin.androidx.scope.activityRetainedScope
 import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 
 class MainActivity : ComponentActivity(), AndroidScopeComponent {
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity(), AndroidScopeComponent {
     // inject scope dependency
     override val scope: Scope by activityScope()
 //    override val scope: Scope by activityRetainedScope() // survive config changes
-    private val android by inject<String>()
+    private val android by inject<String>(named("android"))
     // activityRetainedScope: keep dependency even when config changes
     // activityScope: config changes -> re-create new activity -> re-create the dependency
 
